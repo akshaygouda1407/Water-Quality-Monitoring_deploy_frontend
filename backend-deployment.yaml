@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: backend
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: backend
+
+  template:
+    metadata:
+      labels:
+        app: backend
+
+    spec:
+      containers:
+      - name: backend
+
+        image: akshaygouda646/water-quality-backend:v1
+
+        ports:
+        - containerPort: 8080
+
+        env:
+
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/wqm
+
+        - name: SPRING_DATASOURCE_USERNAME
+          value: root
+
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: Aky@8971
